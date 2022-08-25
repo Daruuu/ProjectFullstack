@@ -1,10 +1,13 @@
-package com.example.projectfullstack.Models;
+package com.example.projectfullstack.Model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
-public class IngredientsModel implements Serializable {
+@Entity
+public class IngredientModel implements Serializable {
 
-    private long id;
+    @Id
+    private long idIngredient;
     private String name;
     private int peso;
     private int kcal;
@@ -18,10 +21,10 @@ public class IngredientsModel implements Serializable {
 
     //CONSTRUCTORS
 
-    public IngredientsModel() {
+    public IngredientModel() {
     }
 
-    public IngredientsModel(String name, int peso, int kcal, double grasas, double grasas_saturadas, double carbohidratos, double carbohidratos_azucares, int fibra, double proteinas, double sal) {
+    public IngredientModel(String name, int peso, int kcal, double grasas, double grasas_saturadas, double carbohidratos, double carbohidratos_azucares, int fibra, double proteinas, double sal) {
         this.name = name;
         this.peso = peso;
         this.kcal = kcal;
@@ -34,8 +37,8 @@ public class IngredientsModel implements Serializable {
         this.sal = sal;
     }
 
-    public IngredientsModel(long id, String name, int peso, int kcal, double grasas, double grasas_saturadas, double carbohidratos, double carbohidratos_azucares, int fibra, double proteinas, double sal) {
-        this.id = id;
+    public IngredientModel(long id, String name, int peso, int kcal, double grasas, double grasas_saturadas, double carbohidratos, double carbohidratos_azucares, int fibra, double proteinas, double sal) {
+        this.idIngredient = id;
         this.name = name;
         this.peso = peso;
         this.kcal = kcal;
@@ -49,12 +52,13 @@ public class IngredientsModel implements Serializable {
     }
     //GETTERS & SETTERS
 
-    public long getId() {
-        return id;
+
+    public void setIdIngredient(long id) {
+        this.idIngredient = id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getIdIngredient() {
+        return idIngredient;
     }
 
     public String getName() {
@@ -143,7 +147,7 @@ public class IngredientsModel implements Serializable {
     @Override
     public String toString() {
         return "Ingredients{" +
-                "id=" + id +
+                "id=" + idIngredient +
                 ", name='" + name + '\'' +
                 ", peso=" + peso +
                 ", kcal=" + kcal +
