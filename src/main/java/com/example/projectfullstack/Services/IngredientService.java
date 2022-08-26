@@ -17,8 +17,8 @@ public interface IngredientService{
     // delete by id recipe or ingredient of recipe
 
 
+/*
 
-    /*
     private final IngredientRepository ingredientRepository;
 
     public IngredientService(IngredientRepository ingredientRepository) {
@@ -38,7 +38,9 @@ public interface IngredientService{
     public void deleteById(Long idIngredient){
         ingredientRepository.deleteById(idIngredient);
     }
-*/
+
+ */
+
     //listar todos los ingredientes
     List<IngredientModel> getAllIngredients();
 
