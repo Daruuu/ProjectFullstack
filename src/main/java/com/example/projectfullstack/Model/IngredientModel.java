@@ -143,7 +143,6 @@ public class IngredientModel implements Serializable {
 
     //toSTRING
 
-
     @Override
     public String toString() {
         return "Ingredients{" +

@@ -2,62 +2,46 @@ package com.example.projectfullstack.Services;
 
 import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Model.RecipeModel;
-import com.example.projectfullstack.Repository.IngredientRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
-@Service
 public interface IngredientService{
-    // adding 3 methods to finding all ingredients,
-    // select or count ingredients,
-    // delete ingredient in new recipe
-    // delete by id recipe or ingredient of recipe
+
+//BASIC METHODS USING CRUD
+
+    //save & create new Ingredient
+    IngredientModel saveNewIngredient(IngredientModel ingredientModel);
+
+    // list ingredient
+    List<IngredientModel> fetchIngredientList();
+
+    //update ingredient
+    IngredientModel updateIngredient(IngredientModel ingredientModel, Long idIngredient);
+
+    //delete ingredient
+    void deleteIngredientById(Long idIngredient);
+
+    //listar ingredients per ID
+    public IngredientModel getIngredientById(Long idIngredient);
 
 
-/*
+// SEARCH METHODS RECIPES FRONTED
 
-    private final IngredientRepository ingredientRepository;
+    //save & create new recipe
+    public String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String categoryRecipe);
 
-    public IngredientService(IngredientRepository ingredientRepository) {
-        this.ingredientRepository = ingredientRepository;
-    }
+    //list recipes
+    List<RecipeModel> fetchRecipeList();
 
+    //delete recipe by ID
+    void deleteRecipeById(Long idRecipe);
 
-    //llamamos a ingredientesRepo para que nos muestre todos los ingredientes
-    public List<IngredientModel> findAll(){
-        var list = ingredientRepository.findAll();
-        var ingredients = new ArrayList<IngredientModel>();
-        //return (List<IngredientModel>) list.iterator();
-        //return ingredients.contains(list);
-        return null;
-    }
+//FILTERS FRONTED
 
-    public void deleteById(Long idIngredient){
-        ingredientRepository.deleteById(idIngredient);
-    }
-
- */
-
-    //listar todos los ingredientes
-    List<IngredientModel> getAllIngredients();
-
-    //save operations
-    public IngredientModel saveIngredient(IngredientModel ingredientModel);
-
-    // read ingredient
-    List<IngredientModel> searchIngredientList();
-
-    //create recipe
+    //listar ingredients per CATEGORY
 
 
-    //update recipe
-    RecipeModel updateRecipe(IngredientModel ingredientModel, Long ingredientId);
 
-    //delete recipe
-    RecipeModel deleteRecipeById(Long idRecipe);
+
 
 
 }
