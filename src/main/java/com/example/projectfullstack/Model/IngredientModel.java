@@ -8,65 +8,67 @@ public class IngredientModel implements Serializable {
 
     @Id
     private long idIngredient;
-    private String name;
+    private String nameIngredient;
     private int peso;
+    private String medicion;
     private int kcal;
-    private double grasas;
-    private double grasas_saturadas;
-    private double carbohidratos;
-    private double carbohidratos_azucares;
+    private float grasas;
+    private float grasaSaturadas;
+    private float carbohidratos;
+    private float carbohidratosAzucares;
     private int fibra;
-    private double proteinas;
-    private double sal;
-
-    //CONSTRUCTORS
+    private float proteinas;
+    private float sal;
+    private float precio;
 
     public IngredientModel() {
     }
 
-    public IngredientModel(String name, int peso, int kcal, double grasas, double grasas_saturadas, double carbohidratos, double carbohidratos_azucares, int fibra, double proteinas, double sal) {
-        this.name = name;
+    public IngredientModel(String nameIngredient, int peso, String medicion, int kcal, float grasas, float grasaSaturadas, float carbohidratos, float carbohidratosAzucares, int fibra, float proteinas, float sal, float precio) {
+        this.nameIngredient = nameIngredient;
         this.peso = peso;
+        this.medicion = medicion;
         this.kcal = kcal;
         this.grasas = grasas;
-        this.grasas_saturadas = grasas_saturadas;
+        this.grasaSaturadas = grasaSaturadas;
         this.carbohidratos = carbohidratos;
-        this.carbohidratos_azucares = carbohidratos_azucares;
+        this.carbohidratosAzucares = carbohidratosAzucares;
         this.fibra = fibra;
         this.proteinas = proteinas;
         this.sal = sal;
+        this.precio = precio;
     }
 
-    public IngredientModel(long id, String name, int peso, int kcal, double grasas, double grasas_saturadas, double carbohidratos, double carbohidratos_azucares, int fibra, double proteinas, double sal) {
-        this.idIngredient = id;
-        this.name = name;
+    public IngredientModel(long idIngredient, String nameIngredient, int peso, String medicion, int kcal, float grasas, float grasaSaturadas, float carbohidratos, float carbohidratosAzucares, int fibra, float proteinas, float sal, float precio) {
+        this.idIngredient = idIngredient;
+        this.nameIngredient = nameIngredient;
         this.peso = peso;
+        this.medicion = medicion;
         this.kcal = kcal;
         this.grasas = grasas;
-        this.grasas_saturadas = grasas_saturadas;
+        this.grasaSaturadas = grasaSaturadas;
         this.carbohidratos = carbohidratos;
-        this.carbohidratos_azucares = carbohidratos_azucares;
+        this.carbohidratosAzucares = carbohidratosAzucares;
         this.fibra = fibra;
         this.proteinas = proteinas;
         this.sal = sal;
-    }
-    //GETTERS & SETTERS
-
-
-    public void setIdIngredient(long id) {
-        this.idIngredient = id;
+        this.precio = precio;
     }
 
     public long getIdIngredient() {
         return idIngredient;
     }
 
-    public String getName() {
-        return name;
+    public void setIdIngredient(long idIngredient) {
+        this.idIngredient = idIngredient;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNameIngredient() {
+        return nameIngredient;
+    }
+
+    public void setNameIngredient(String nameIngredient) {
+        this.nameIngredient = nameIngredient;
     }
 
     public int getPeso() {
@@ -77,6 +79,14 @@ public class IngredientModel implements Serializable {
         this.peso = peso;
     }
 
+    public String getMedicion() {
+        return medicion;
+    }
+
+    public void setMedicion(String medicion) {
+        this.medicion = medicion;
+    }
+
     public int getKcal() {
         return kcal;
     }
@@ -85,36 +95,36 @@ public class IngredientModel implements Serializable {
         this.kcal = kcal;
     }
 
-    public double getGrasas() {
+    public float getGrasas() {
         return grasas;
     }
 
-    public void setGrasas(double grasas) {
+    public void setGrasas(float grasas) {
         this.grasas = grasas;
     }
 
-    public double getGrasas_saturadas() {
-        return grasas_saturadas;
+    public float getGrasaSaturadas() {
+        return grasaSaturadas;
     }
 
-    public void setGrasas_saturadas(double grasas_saturadas) {
-        this.grasas_saturadas = grasas_saturadas;
+    public void setGrasaSaturadas(float grasaSaturadas) {
+        this.grasaSaturadas = grasaSaturadas;
     }
 
-    public double getCarbohidratos() {
+    public float getCarbohidratos() {
         return carbohidratos;
     }
 
-    public void setCarbohidratos(double carbohidratos) {
+    public void setCarbohidratos(float carbohidratos) {
         this.carbohidratos = carbohidratos;
     }
 
-    public double getCarbohidratos_azucares() {
-        return carbohidratos_azucares;
+    public float getCarbohidratosAzucares() {
+        return carbohidratosAzucares;
     }
 
-    public void setCarbohidratos_azucares(double carbohidratos_azucares) {
-        this.carbohidratos_azucares = carbohidratos_azucares;
+    public void setCarbohidratosAzucares(float carbohidratosAzucares) {
+        this.carbohidratosAzucares = carbohidratosAzucares;
     }
 
     public int getFibra() {
@@ -125,38 +135,46 @@ public class IngredientModel implements Serializable {
         this.fibra = fibra;
     }
 
-    public double getProteinas() {
+    public float getProteinas() {
         return proteinas;
     }
 
-    public void setProteinas(double proteinas) {
+    public void setProteinas(float proteinas) {
         this.proteinas = proteinas;
     }
 
-    public double getSal() {
+    public float getSal() {
         return sal;
     }
 
-    public void setSal(double sal) {
+    public void setSal(float sal) {
         this.sal = sal;
     }
 
-    //toSTRING
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
 
     @Override
     public String toString() {
-        return "Ingredients{" +
-                "id=" + idIngredient +
-                ", name='" + name + '\'' +
+        return "IngredientModel{" +
+                "idIngredient=" + idIngredient +
+                ", nameIngredient='" + nameIngredient + '\'' +
                 ", peso=" + peso +
+                ", medicion='" + medicion + '\'' +
                 ", kcal=" + kcal +
                 ", grasas=" + grasas +
-                ", grasas_saturadas=" + grasas_saturadas +
+                ", grasaSaturadas=" + grasaSaturadas +
                 ", carbohidratos=" + carbohidratos +
-                ", carbohidratos_azucares=" + carbohidratos_azucares +
+                ", carbohidratosAzucares=" + carbohidratosAzucares +
                 ", fibra=" + fibra +
                 ", proteinas=" + proteinas +
                 ", sal=" + sal +
+                ", precio=" + precio +
                 '}';
     }
 }

@@ -1,7 +1,5 @@
 package com.example.projectfullstack.Model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.ArrayList;
@@ -10,25 +8,19 @@ import java.util.List;
 @Entity
 public class RecipeModel {
 
-
     @Id
     private Long idRecipe;
-    private Long idCategory;
-    private String nameCategory;
+    private Long nameRecipe;
     //private ArrayList <IngredientModel> ingredientEntityArraylist = new ArrayList<>();
 
-    //CONSTRUCTORS
+
+    public RecipeModel(Long idRecipe, Long nameRecipe) {
+        this.idRecipe = idRecipe;
+        this.nameRecipe = nameRecipe;
+    }
 
     public RecipeModel() {
     }
-
-    public RecipeModel(Long idRecipe, Long idCategory, String nameCategory) {
-        this.idRecipe = idRecipe;
-        this.idCategory = idCategory;
-        this.nameCategory = nameCategory;
-    }
-
-    //GETTERS & SETTERS
 
     public Long getIdRecipe() {
         return idRecipe;
@@ -38,32 +30,19 @@ public class RecipeModel {
         this.idRecipe = idRecipe;
     }
 
-    public Long getIdCategory() {
-        return idCategory;
+    public Long getNameRecipe() {
+        return nameRecipe;
     }
 
-    public void setIdCategory(Long idCategory) {
-        this.idCategory = idCategory;
+    public void setNameRecipe(Long nameRecipe) {
+        this.nameRecipe = nameRecipe;
     }
-
-    public String getNameCategory() {
-        return nameCategory;
-    }
-
-    public void setNameCategory(String nameCategory) {
-        this.nameCategory = nameCategory;
-    }
-
-
-    //toSTRING
-
 
     @Override
     public String toString() {
         return "RecipeModel{" +
                 "idRecipe=" + idRecipe +
-                ", idCategory=" + idCategory +
-                ", nameCategory='" + nameCategory + '\'' +
+                ", nameRecipe=" + nameRecipe +
                 '}';
     }
 }
