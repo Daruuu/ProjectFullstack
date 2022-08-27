@@ -3,9 +3,13 @@ package com.example.projectfullstack.Controller;
 import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Services.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class MainController {
@@ -14,7 +18,7 @@ public class MainController {
     private IngredientService ingredientService;
 
     @PostMapping(value = "/ingredients")
-    public IngredientModel saveIngredient(@RequestBody IngredientModel ingredientModel){
+    public IngredientModel saveIngredient(@Validated @RequestBody IngredientModel ingredientModel){
         return ingredientService.saveNewIngredient(ingredientModel);
     }
 
@@ -32,5 +36,17 @@ public class MainController {
     public String deleteIngredientById(@PathVariable("id")Long idIngredient ){
         ingredientService.deleteIngredientById(idIngredient);
         return "deleted successful!";
+    }
+@RequestMapping(value = "/buscar/{id}")
+    public ResponseEntity<IngredientModel> findIngredientById(@PathVariable(value = "id") Long idIngredient){
+
+    Optional<IngredientModel> ingrediente = Optional.ofNullable(ingredientService.getIngredientById(idIngredient));
+
+    if (ingrediente.isPresent()) {  //return 200 Ok
+        return ResponseEntity.ok().body(ingrediente.get());
+    } else {                        //return notfound
+        return ResponseEntity.notFound().build();
+    }
+
     }
 }
