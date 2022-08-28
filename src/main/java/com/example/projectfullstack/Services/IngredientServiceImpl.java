@@ -6,7 +6,6 @@ import com.example.projectfullstack.Repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,16 +15,13 @@ public class IngredientServiceImpl implements IngredientService{
     private IngredientRepository ingredientRepository;
 
     @Override
-    public IngredientModel saveNewIngredient(IngredientModel ingredientModel) {
-        return ingredientRepository.save(ingredientModel);
+    public void addNewIngredient(IngredientModel ingredientModel) {
+        ingredientRepository.save(ingredientModel);
     }
 
     @Override
-    public List<IngredientModel> fetchIngredientList() {
-        List<IngredientModel> ingredients = new ArrayList<>();
-        ingredientRepository.findAll().forEach(ingredients::add);
-        return ingredients;
-        //return (List<IngredientModel>) ingredientRepository.findAll();
+    public Iterable<IngredientModel> getIngredientList() {
+        return ingredientRepository.findAll();
     }
 
     @Override

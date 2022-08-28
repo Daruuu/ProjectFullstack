@@ -2,17 +2,17 @@ package com.example.projectfullstack.Services;
 
 import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Model.RecipeModel;
+
 import java.util.List;
 
 public interface IngredientService{
 
 //BASIC METHODS USING CRUD
-
-    //save & create new Ingredient
-    IngredientModel saveNewIngredient(IngredientModel ingredientModel);
+    //save new Ingredient
+    void addNewIngredient(IngredientModel ingredientModel);
 
     // list ingredient
-    List<IngredientModel> fetchIngredientList();
+    Iterable<IngredientModel> getIngredientList();
 
     //update ingredient
     IngredientModel updateIngredient(IngredientModel ingredientModel, Long idIngredient);
@@ -21,13 +21,13 @@ public interface IngredientService{
     void deleteIngredientById(Long idIngredient);
 
     //listar ingredients per ID
-    public IngredientModel getIngredientById(Long idIngredient);
+    IngredientModel getIngredientById(Long idIngredient);
 
 
 // SEARCH METHODS RECIPES FRONTED
 
     //save & create new recipe
-    public String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String categoryRecipe);
+    String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String categoryRecipe);
 
     //list recipes
     List<RecipeModel> fetchRecipeList();

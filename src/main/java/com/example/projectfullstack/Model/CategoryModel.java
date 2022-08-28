@@ -1,12 +1,17 @@
 package com.example.projectfullstack.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "categories")
 public class CategoryModel {
     @Id
+    @Column(name = "id_category")
     private int idCategory;
+    @Column(name = "name_category")
     private String nameCategory;
 
     public CategoryModel() {

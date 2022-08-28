@@ -1,20 +1,27 @@
 package com.example.projectfullstack.Model;
 
+import lombok.extern.apachecommons.CommonsLog;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "ingredients")
 public class IngredientModel implements Serializable {
 
     @Id
+    @Column(name = "id_ingredient", unique = true)
     private long idIngredient;
+    @Column(name = "name_ingredient", unique = true)
     private String nameIngredient;
     private int peso;
     private String medicion;
     private int kcal;
     private float grasas;
+    @Column(name = "grasas_saturadas")
     private float grasaSaturadas;
     private float carbohidratos;
+    @Column(name = "carbohidratos_azucares")
     private float carbohidratosAzucares;
     private int fibra;
     private float proteinas;
