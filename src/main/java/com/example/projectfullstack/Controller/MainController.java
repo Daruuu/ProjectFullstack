@@ -16,14 +16,14 @@ public class MainController {
     @Autowired
     private IngredientService ingredientService;
 
-    private IngredientModel ingredientModel;
+    //private IngredientModel ingredientModel;
 
     @GetMapping(value = "/test")
     public String testFunction(){
         return "Hello world";
     }
 
-
+    //ADD NEW INGREDIENT
     @PostMapping(value = "/add")
     //http://localhost:8080/api/add
     public String addNewIngredient(@Validated @RequestBody IngredientModel ingredientModel){
@@ -39,37 +39,44 @@ public class MainController {
         return ingredientService.saveNewIngredient(ingredientModel);
     }*/
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)//  http://localhost:8080/api/all
-
-    public Iterable<IngredientModel> fetchIngredientList() {
+    //SHOW ALL INGREDIENTS
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    //  http://localhost:8080/api/all
+    public Iterable<IngredientModel> getIngredientsList() {
         return ingredientService.getIngredientList();
     }
 
-    @RequestMapping(value = "/ingredient/update/{id}", method = RequestMethod.PUT)
-    //localhost:8080/api/update/id
-    public IngredientModel updateIngredient(IngredientModel ingredientModel, @PathVariable("id") Long idIngredient) {
+    //UPDATE
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    //  localhost:8080/api/update/id
+    public IngredientModel updateIngredient(@RequestBody IngredientModel ingredientModel, @PathVariable("id") Long idIngredient) {
         return ingredientService.updateIngredient(ingredientModel, idIngredient);
     }
 
-    @RequestMapping(value = "/ingredient/delete/{id}", method = RequestMethod.DELETE)
-
-    public String deleteIngredientById(@PathVariable("id") Long idIngredient) {
+    //DELETE BY ID
+    @GetMapping(value = "/delete/{id}")
+    //  http://localhost:8080/api/delete/id
+    public String deleteIngredientById(@PathVariable(value = "id") Long idIngredient) {
         ingredientService.deleteIngredientById(idIngredient);
-        return "deleted successful!";
+        return "deleted successfully!";
     }
 
-    @RequestMapping(value = "/buscar/{id}") //http://localhost:8080/api/buscar/
-
-    public ResponseEntity<IngredientModel> findIngredientById(@PathVariable(value = "id") Long idIngredient) {
+    //BUSCAR POR ID
+    @RequestMapping(value = "/buscar/{id}", method = RequestMethod.GET)
+    //  http://localhost:8080/api/buscar/
+    public ResponseEntity<IngredientModel> getIngredientById(@PathVariable(value = "id") Long idIngredient) {
 
         Optional<IngredientModel> ingrediente = Optional.ofNullable(ingredientService.getIngredientById(idIngredient));
         return ingrediente.map(ingredientModel -> ResponseEntity.ok().body(ingredientModel)).orElseGet(() -> ResponseEntity.notFound().build());
+    }
     /*
-    if (ingrediente.isPresent()) {  //return 200 Ok
+    if (ingrediente.isPresent()) {  //return 199 Ok
         return ResponseEntity.ok().body(ingrediente.get());
     } else {                        //return notfound
         return ResponseEntity.notFound().build();
     }
      */
-    }
+
+
+
 }

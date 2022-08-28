@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class IngredientModel implements Serializable {
 
     @Id
-    @Column(name = "id_ingredient", unique = true)
+    @Column(name = "id_ingredient")
     private long idIngredient;
     @Column(name = "name_ingredient", unique = true)
     private String nameIngredient;

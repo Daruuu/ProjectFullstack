@@ -7,37 +7,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class IngredientServiceImpl implements IngredientService{
+public class IngredientServiceImpl implements IngredientService {
 
     @Autowired
-    private IngredientRepository ingredientRepository;
+    private IngredientRepository ingredientRepo;
 
     @Override
     public void addNewIngredient(IngredientModel ingredientModel) {
-        ingredientRepository.save(ingredientModel);
+        ingredientRepo.save(ingredientModel);
     }
 
     @Override
     public Iterable<IngredientModel> getIngredientList() {
-        return ingredientRepository.findAll();
+        return ingredientRepo.findAll();
     }
 
     @Override
     public IngredientModel updateIngredient(IngredientModel ingredientModel, Long idIngredient) {
-        return ingredientRepository.save(ingredientModel);
+        return ingredientRepo.save(ingredientModel);
     }
 
     @Override
     public void deleteIngredientById(Long idIngredient) {
-        ingredientRepository.deleteById(idIngredient);
+        ingredientRepo.deleteById(idIngredient);
     }
 
     @Override
     public IngredientModel getIngredientById(Long idIngredient) {
-        return ingredientRepository.findById(idIngredient).get();
+        Optional<IngredientModel> optional = ingredientRepo.findById(idIngredient);
+        IngredientModel ingredient = null;
+        if (optional.isPresent())
+            ingredient = optional.get();
+        else
+            throw new RuntimeException("Ingredient NOT FOUND for id:" + idIngredient);
+        return ingredient;
     }
+
 
 
     // RECIPES METHODS

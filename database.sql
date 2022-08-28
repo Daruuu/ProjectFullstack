@@ -4,20 +4,11 @@ USE
 -- -----------------------------------------------------
 -- Table `mydb`.`ingredients`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`ingredients`
-(
-    `id_ingredient`
-    INT,
-    `name_ingredient`
-    VARCHAR
-(
-    150
-),
+CREATE TABLE IF NOT EXISTS `mydb`.`ingredients`(
+    `id_ingredient` INT,
+    `name_ingredient` VARCHAR(150),
     `peso` INT,
-    `medicion` VARCHAR
-(
-    3
-),
+    `medicion` VARCHAR(3),
     `kcal` INT,
     `grasas` FLOAT,
     `grasas_saturadas` FLOAT,
@@ -27,44 +18,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ingredients`
     `proteinas` FLOAT,
     `sal` FLOAT,
     `precio` FLOAT,
-    PRIMARY KEY
-(
-    `id_ingredient`
-));
+    PRIMARY KEY(`id_ingredient`));
 
 -- -----------------------------------------------------
 -- Table `mydb`.`categories`
 -- -----------------------------------------------------
 DROP TABLE if exists categories;
-CREATE TABLE IF NOT EXISTS `mydb`.`categories`
-(
-    `id_category`
-    INT,
-    `name_category`
-    VARCHAR
-(
-    45
-));
-
+CREATE TABLE IF NOT EXISTS `mydb`.`categories`(
+    `id_category` INT,
+    `name_category` VARCHAR (45));
 
 -- -----------------------------------------------------
 -- Table `mydb`.`recipes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`recipes`
-(
-    `id_recipe`
-    INT
-    NOT
-    NULL,
-    `name_recipe`
-    VARCHAR
-(
-    45
-) NULL,
-    PRIMARY KEY
-(
-    `id_recipe`
-));
+CREATE TABLE IF NOT EXISTS `mydb`.`recipes`(
+    `id_recipe` INT NOT NULL,
+    `name_recipe` VARCHAR(45) NULL,
+    PRIMARY KEY (`id_recipe`));
 
 
 INSERT INTO categories (id_category, name_category)
