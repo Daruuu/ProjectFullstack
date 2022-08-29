@@ -6,6 +6,7 @@ import com.example.projectfullstack.Repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,13 @@ public class IngredientServiceImpl implements IngredientService {
     public void addNewIngredient(IngredientModel ingredientModel) {
         ingredientRepo.save(ingredientModel);
     }
+
+    @Override
+    public boolean comprobarIngredient(String nameIngredient) throws SQLException {
+        String queryComprobar = "SELECT name_ingredient FROM ingredients WHERE ";
+        return false;
+    }
+
 
     @Override
     public Iterable<IngredientModel> getIngredientList() {
@@ -47,7 +55,6 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
 
-
     // RECIPES METHODS
     @Override
     public String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String categoryRecipe) {
@@ -63,4 +70,5 @@ public class IngredientServiceImpl implements IngredientService {
     public void deleteRecipeById(Long idRecipe) {
 
     }
+
 }

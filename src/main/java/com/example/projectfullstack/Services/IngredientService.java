@@ -3,6 +3,7 @@ package com.example.projectfullstack.Services;
 import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Model.RecipeModel;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IngredientService{
@@ -38,6 +39,11 @@ public interface IngredientService{
 //FILTERS FRONTED
 
     //listar ingredients per CATEGORY
+
+
+//METHODS TO CALL IN ADDINGREDIENT()
+
+    boolean comprobarIngredient(String nameIngredient) throws SQLException;
 
 
 

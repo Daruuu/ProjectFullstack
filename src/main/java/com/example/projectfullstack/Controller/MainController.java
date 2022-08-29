@@ -47,18 +47,18 @@ public class MainController {
     }
 
     //UPDATE
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/update/{id}")
     //  localhost:8080/api/update/id
-    public IngredientModel updateIngredient(@RequestBody IngredientModel ingredientModel, @PathVariable("id") Long idIngredient) {
+    public IngredientModel updateIngredient(@Validated @RequestBody IngredientModel ingredientModel, @PathVariable("id") Long idIngredient) {
         return ingredientService.updateIngredient(ingredientModel, idIngredient);
     }
 
     //DELETE BY ID
-    @GetMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     //  http://localhost:8080/api/delete/id
     public String deleteIngredientById(@PathVariable(value = "id") Long idIngredient) {
         ingredientService.deleteIngredientById(idIngredient);
-        return "deleted successfully!";
+        return "deleted successfully! " + idIngredient;
     }
 
     //BUSCAR POR ID
