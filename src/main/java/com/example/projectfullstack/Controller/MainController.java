@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST}, maxAge = 3600)
 @RestController
 @RequestMapping(value = "/api")
 public class MainController {
@@ -16,26 +17,25 @@ public class MainController {
     @Autowired
     private IngredientService ingredientService;
 
-    //private IngredientModel ingredientModel;
-
     @GetMapping(value = "/test")
-    public String testFunction(){
+    public String testFunction() {
         return "Hello world";
     }
 
+
     //ADD NEW INGREDIENT
-    @PostMapping(value = "/add")
-    //http://localhost:8080/api/add
-    public String addNewIngredient(@Validated @RequestBody IngredientModel ingredientModel){
-        try{
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    //  http://localhost:8080/api/add
+    public String addNewIngredient(@Validated @RequestBody IngredientModel ingredientModel) {
+        try {
             ingredientService.addNewIngredient(ingredientModel);
             return "saved new ingredient";
-        }catch (Exception e){
+        } catch (Exception e) {
             return "failed add new ingredient";
         }
     }
     /*
-    public IngredientModel saveIngredient(@Validated @RequestBody IngredientModel ingredientModel) {
+    public IngredientModel addIngredient(@Validated @RequestBody IngredientModel ingredientModel) {
         return ingredientService.saveNewIngredient(ingredientModel);
     }*/
 
@@ -69,6 +69,7 @@ public class MainController {
         Optional<IngredientModel> ingrediente = Optional.ofNullable(ingredientService.getIngredientById(idIngredient));
         return ingrediente.map(ingredientModel -> ResponseEntity.ok().body(ingredientModel)).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
     /*
     if (ingrediente.isPresent()) {  //return 199 Ok
         return ResponseEntity.ok().body(ingrediente.get());
@@ -76,7 +77,4 @@ public class MainController {
         return ResponseEntity.notFound().build();
     }
      */
-
-
-
 }

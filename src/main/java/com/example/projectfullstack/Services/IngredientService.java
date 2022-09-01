@@ -21,7 +21,7 @@ public interface IngredientService{
     //delete ingredient
     void deleteIngredientById(Long idIngredient);
 
-    //listar ingredients per ID
+    //buscar ingrediente per ID
     IngredientModel getIngredientById(Long idIngredient);
 
 
