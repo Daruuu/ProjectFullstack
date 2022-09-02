@@ -22,7 +22,6 @@ public class MainController {
         return "Hello world";
     }
 
-
     //ADD NEW INGREDIENT
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     //  http://localhost:8080/api/add

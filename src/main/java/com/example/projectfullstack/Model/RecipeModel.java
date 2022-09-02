@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.List;
 
 @Entity
 @Table(name = "recipes")
@@ -15,12 +14,14 @@ public class RecipeModel {
     private Long idRecipe;
     @Column(name = "name_recipe")
     private Long nameRecipe;
-    //private ArrayList <IngredientModel> ingredientEntityArraylist = new ArrayList<>();
 
+    @Column(name = "id_recipe_category")
+    private int idRecipeCategory;
 
-    public RecipeModel(Long idRecipe, Long nameRecipe) {
+    public RecipeModel(Long idRecipe, Long nameRecipe, int idRecipeCategory) {
         this.idRecipe = idRecipe;
         this.nameRecipe = nameRecipe;
+        this.idRecipeCategory = idRecipeCategory;
     }
 
     public RecipeModel() {
@@ -42,11 +43,20 @@ public class RecipeModel {
         this.nameRecipe = nameRecipe;
     }
 
+    public int getIdRecipeCategory() {
+        return idRecipeCategory;
+    }
+
+    public void setIdRecipeCategory(int idRecipeCategory) {
+        this.idRecipeCategory = idRecipeCategory;
+    }
+
     @Override
     public String toString() {
         return "RecipeModel{" +
                 "idRecipe=" + idRecipe +
                 ", nameRecipe=" + nameRecipe +
+                ", idRecipeCategory=" + idRecipeCategory +
                 '}';
     }
 }
