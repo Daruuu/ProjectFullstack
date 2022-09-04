@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,8 +16,6 @@ public class RecipeModel {
     private Long idRecipe;
     @Column(name = "name_recipe")
     private Long nameRecipe;
-    //private ArrayList <IngredientModel> ingredientEntityArraylist = new ArrayList<>();
-
 
     public RecipeModel(Long idRecipe, Long nameRecipe) {
         this.idRecipe = idRecipe;

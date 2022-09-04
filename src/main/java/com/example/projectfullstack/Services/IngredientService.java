@@ -3,50 +3,40 @@ package com.example.projectfullstack.Services;
 import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Model.RecipeModel;
 
-import java.sql.SQLException;
-import java.util.List;
-
 public interface IngredientService{
 
 //BASIC METHODS USING CRUD
+
     //save new Ingredient
     void addNewIngredient(IngredientModel ingredientModel);
 
-    // list ingredient
+    // list ALL ingredients
     Iterable<IngredientModel> getIngredientList();
 
-    //update ingredient
+    //update ingredient by ID
     IngredientModel updateIngredient(IngredientModel ingredientModel, Long idIngredient);
 
-    //delete ingredient
+    //delete ingredient by ID
     void deleteIngredientById(Long idIngredient);
 
     //buscar ingrediente per ID
     IngredientModel getIngredientById(Long idIngredient);
 
 
-// SEARCH METHODS RECIPES FRONTED
+// METHODS RECIPES FRONTED
 
     //save & create new recipe
-    String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String categoryRecipe);
+    String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String idCategoryRecipe);
 
-    //list recipes
-    List<RecipeModel> fetchRecipeList();
+    //list ALL recipes
+    Iterable<RecipeModel> getAllRecipesList();
+
+    Iterable<RecipeModel> fetchRecipeList();
 
     //delete recipe by ID
     void deleteRecipeById(Long idRecipe);
 
-//FILTERS FRONTED
-
-    //listar ingredients per CATEGORY
-
-
-//METHODS TO CALL IN ADDINGREDIENT()
-
-    boolean comprobarIngredient(String nameIngredient) throws SQLException;
-
-
-
+    //CREATE NEW RECIPE
 
 
 

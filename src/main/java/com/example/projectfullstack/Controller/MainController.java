@@ -4,29 +4,22 @@ import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Services.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST}, maxAge = 3600)
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, maxAge = 3600)
 @RestController
 @RequestMapping(value = "/api")
 public class MainController {
-
     @Autowired
     private IngredientService ingredientService;
 
-    @GetMapping(value = "/test")
-    public String testFunction() {
-        return "Hello world";
-    }
-
-
-    //ADD NEW INGREDIENT
+    //CREATE NEW INGREDIENT
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     //  http://localhost:8080/api/add
-    public String addNewIngredient(@Validated @RequestBody IngredientModel ingredientModel) {
+    public String addNewIngredient(@Valid @RequestBody IngredientModel ingredientModel) {
         try {
             ingredientService.addNewIngredient(ingredientModel);
             return "saved new ingredient";
@@ -46,22 +39,23 @@ public class MainController {
         return ingredientService.getIngredientList();
     }
 
-    //UPDATE
+    //UPDATE INGREDIENT BY ID
     @PutMapping(value = "/update/{id}")
     //  localhost:8080/api/update/id
-    public IngredientModel updateIngredient(@Validated @RequestBody IngredientModel ingredientModel, @PathVariable("id") Long idIngredient) {
+    public IngredientModel updateIngredient(@Valid @RequestBody IngredientModel ingredientModel, @PathVariable(value = "id") Long idIngredient) {
         return ingredientService.updateIngredient(ingredientModel, idIngredient);
     }
 
-    //DELETE BY ID
+
+    //DELETE INGREDIENT BY ID
     @DeleteMapping(value = "/delete/{id}")
     //  http://localhost:8080/api/delete/id
     public String deleteIngredientById(@PathVariable(value = "id") Long idIngredient) {
         ingredientService.deleteIngredientById(idIngredient);
-        return "deleted successfully! " + idIngredient;
+        return "ingredient deleted successfully! with id: " + idIngredient;
     }
 
-    //BUSCAR POR ID
+    //BUSCAR INGREDIENTE POR ID
     @RequestMapping(value = "/buscar/{id}", method = RequestMethod.GET)
     //  http://localhost:8080/api/buscar/
     public ResponseEntity<IngredientModel> getIngredientById(@PathVariable(value = "id") Long idIngredient) {
@@ -69,7 +63,6 @@ public class MainController {
         Optional<IngredientModel> ingrediente = Optional.ofNullable(ingredientService.getIngredientById(idIngredient));
         return ingrediente.map(ingredientModel -> ResponseEntity.ok().body(ingredientModel)).orElseGet(() -> ResponseEntity.notFound().build());
     }
-
     /*
     if (ingrediente.isPresent()) {  //return 199 Ok
         return ResponseEntity.ok().body(ingrediente.get());
@@ -77,4 +70,8 @@ public class MainController {
         return ResponseEntity.notFound().build();
     }
      */
+
+    //ENDPOINTS FRONTED:
+
+
 }

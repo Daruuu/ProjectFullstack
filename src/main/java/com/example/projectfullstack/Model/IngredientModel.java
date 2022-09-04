@@ -1,7 +1,5 @@
 package com.example.projectfullstack.Model;
 
-import lombok.extern.apachecommons.CommonsLog;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -27,11 +25,13 @@ public class IngredientModel implements Serializable {
     private float proteinas;
     private float sal;
     private float precio;
+    @Column(name = "number_ingredient_category")
+    private int numberCategory;
 
     public IngredientModel() {
     }
 
-    public IngredientModel(String nameIngredient, int peso, String medicion, int kcal, float grasas, float grasaSaturadas, float carbohidratos, float carbohidratosAzucares, int fibra, float proteinas, float sal, float precio) {
+    public IngredientModel(String nameIngredient, int peso, String medicion, int kcal, float grasas, float grasaSaturadas, float carbohidratos, float carbohidratosAzucares, int fibra, float proteinas, float sal, float precio, int numberCategory) {
         this.nameIngredient = nameIngredient;
         this.peso = peso;
         this.medicion = medicion;
@@ -44,9 +44,10 @@ public class IngredientModel implements Serializable {
         this.proteinas = proteinas;
         this.sal = sal;
         this.precio = precio;
+        this.numberCategory = numberCategory;
     }
 
-    public IngredientModel(long idIngredient, String nameIngredient, int peso, String medicion, int kcal, float grasas, float grasaSaturadas, float carbohidratos, float carbohidratosAzucares, int fibra, float proteinas, float sal, float precio) {
+    public IngredientModel(long idIngredient, String nameIngredient, int peso, String medicion, int kcal, float grasas, float grasaSaturadas, float carbohidratos, float carbohidratosAzucares, int fibra, float proteinas, float sal, float precio, int numberCategory) {
         this.idIngredient = idIngredient;
         this.nameIngredient = nameIngredient;
         this.peso = peso;
@@ -60,6 +61,7 @@ public class IngredientModel implements Serializable {
         this.proteinas = proteinas;
         this.sal = sal;
         this.precio = precio;
+        this.numberCategory = numberCategory;
     }
 
     public long getIdIngredient() {
@@ -166,6 +168,14 @@ public class IngredientModel implements Serializable {
         this.precio = precio;
     }
 
+    public int getNumberCategory() {
+        return numberCategory;
+    }
+
+    public void setNumberCategory(int numberCategory) {
+        this.numberCategory = numberCategory;
+    }
+
     @Override
     public String toString() {
         return "IngredientModel{" +
@@ -182,6 +192,7 @@ public class IngredientModel implements Serializable {
                 ", proteinas=" + proteinas +
                 ", sal=" + sal +
                 ", precio=" + precio +
+                ", numberCategory=" + numberCategory +
                 '}';
     }
 }

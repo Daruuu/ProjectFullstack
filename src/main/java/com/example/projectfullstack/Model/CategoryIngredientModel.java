@@ -6,22 +6,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "categories")
-public class CategoryModel {
+@Table(name = "ingredient_category")
+public class CategoryIngredientModel {
     @Id
     @Column(name = "id_category")
     private int idCategory;
     @Column(name = "name_category")
     private String nameCategory;
 
-    public CategoryModel() {
+    public CategoryIngredientModel() {
     }
 
-    public CategoryModel(String nameCategory) {
+    public CategoryIngredientModel(String nameCategory) {
         this.nameCategory = nameCategory;
     }
 
-    public CategoryModel(int idCategory, String nameCategory) {
+    public CategoryIngredientModel(int idCategory, String nameCategory) {
         this.idCategory = idCategory;
         this.nameCategory = nameCategory;
     }
@@ -44,7 +44,7 @@ public class CategoryModel {
 
     @Override
     public String toString() {
-        return "CategoryModel{" +
+        return "CategoryIngredientModel{" +
                 "idCategory=" + idCategory +
                 ", nameCategory='" + nameCategory + '\'' +
                 '}';
