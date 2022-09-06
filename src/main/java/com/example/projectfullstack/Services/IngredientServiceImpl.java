@@ -4,8 +4,10 @@ import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Model.RecipeModel;
 import com.example.projectfullstack.Repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -13,6 +15,7 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Autowired
     private IngredientRepository ingredientRepo;
+    private JdbcTemplate jdbcTemplate;
 
     // ADD NEW INGREDIENT
     @Override
@@ -56,11 +59,18 @@ public class IngredientServiceImpl implements IngredientService {
         return ingredient;
     }
 
-
     // RECIPES METHODS
     @Override
     public String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String categoryRecipe) {
         return null;
+    }
+
+    @Override
+    public void createRecipe(int idNewRecipe, ArrayList<IngredientModel> ingredientRecipe, int cantidadIngredient) {
+        // String sql = "
+        //         "INSERT INTO new_recipes(ingredients_id_ingredient)
+        //VALUES( ?);
+        //";
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.example.projectfullstack.Services;
 import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Model.RecipeModel;
 
+import java.util.ArrayList;
+
 public interface IngredientService{
 
 //BASIC METHODS USING CRUD
@@ -27,6 +29,7 @@ public interface IngredientService{
 
     //save & create new recipe
     String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String idCategoryRecipe);
+    void createRecipe(int idNewRecipe, ArrayList<IngredientModel> ingredientRecipe, int cantidadIngredient);
 
     //list ALL recipes
     Iterable<RecipeModel> getAllRecipesList();

@@ -7,21 +7,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ingredient_category")
-public class CategoryIngredientModel {
+public class IngredientCategoryModel {
     @Id
     @Column(name = "id_category")
     private int idCategory;
     @Column(name = "name_category")
     private String nameCategory;
 
-    public CategoryIngredientModel() {
+    public IngredientCategoryModel() {
     }
 
-    public CategoryIngredientModel(String nameCategory) {
+    public IngredientCategoryModel(String nameCategory) {
         this.nameCategory = nameCategory;
     }
 
-    public CategoryIngredientModel(int idCategory, String nameCategory) {
+    public IngredientCategoryModel(int idCategory, String nameCategory) {
         this.idCategory = idCategory;
         this.nameCategory = nameCategory;
     }
@@ -44,7 +44,7 @@ public class CategoryIngredientModel {
 
     @Override
     public String toString() {
-        return "CategoryIngredientModel{" +
+        return "IngredientCategoryModel{" +
                 "idCategory=" + idCategory +
                 ", nameCategory='" + nameCategory + '\'' +
                 '}';

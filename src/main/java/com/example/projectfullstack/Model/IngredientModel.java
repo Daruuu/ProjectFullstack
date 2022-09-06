@@ -25,7 +25,7 @@ public class IngredientModel implements Serializable {
     private float proteinas;
     private float sal;
     private float precio;
-    @Column(name = "number_ingredient_category")
+    @Column(name = "number_categories")
     private int numberCategory;
 
     public IngredientModel() {

@@ -1,12 +1,15 @@
 package com.example.projectfullstack.Controller;
 
+import com.example.projectfullstack.Model.IngredientCategoryModel;
 import com.example.projectfullstack.Model.IngredientModel;
+import com.example.projectfullstack.Services.IngredientCategoryService;
 import com.example.projectfullstack.Services.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, maxAge = 3600)
@@ -15,11 +18,13 @@ import java.util.Optional;
 public class MainController {
     @Autowired
     private IngredientService ingredientService;
+    @Autowired
+    private IngredientCategoryService ingredientCategoryService;
 
     //CREATE NEW INGREDIENT
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/addIngredient", method = RequestMethod.POST)
     //  http://localhost:8080/api/add
-    public String addNewIngredient(@Valid @RequestBody IngredientModel ingredientModel) {
+    public String addNewIngredient(@Validated @RequestBody IngredientModel ingredientModel) {
         try {
             ingredientService.addNewIngredient(ingredientModel);
             return "saved new ingredient";
@@ -33,19 +38,18 @@ public class MainController {
     }*/
 
     //SHOW ALL INGREDIENTS
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/allIngredients", method = RequestMethod.GET)
     //  http://localhost:8080/api/all
     public Iterable<IngredientModel> getIngredientsList() {
         return ingredientService.getIngredientList();
     }
 
     //UPDATE INGREDIENT BY ID
-    @PutMapping(value = "/update/{id}")
+    @PutMapping(value = "/updateIngredient/{id}")
     //  localhost:8080/api/update/id
-    public IngredientModel updateIngredient(@Valid @RequestBody IngredientModel ingredientModel, @PathVariable(value = "id") Long idIngredient) {
+    public IngredientModel updateIngredient(@Validated @RequestBody IngredientModel ingredientModel, @PathVariable(value = "id") Long idIngredient) {
         return ingredientService.updateIngredient(ingredientModel, idIngredient);
     }
-
 
     //DELETE INGREDIENT BY ID
     @DeleteMapping(value = "/delete/{id}")
@@ -70,6 +74,15 @@ public class MainController {
         return ResponseEntity.notFound().build();
     }
      */
+
+    //ENDPOINTS INGREDIENTCATEGORY
+
+    @RequestMapping(value = "/allIngredientCategory", method = RequestMethod.GET)
+    //  localhost:8080/api/allIngredientCategory
+    public Iterable<IngredientCategoryModel> getAllCategoryIngredients(){
+        return ingredientCategoryService.getCategoryIngredientList();
+    }
+
 
     //ENDPOINTS FRONTED:
 
