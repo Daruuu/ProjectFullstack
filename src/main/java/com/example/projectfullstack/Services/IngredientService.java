@@ -24,23 +24,4 @@ public interface IngredientService{
     //buscar ingrediente per ID
     IngredientModel getIngredientById(Long idIngredient);
 
-
-// METHODS RECIPES FRONTED
-
-    //save & create new recipe
-    String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String idCategoryRecipe);
-    void createRecipe(int idNewRecipe, ArrayList<IngredientModel> ingredientRecipe, int cantidadIngredient);
-
-    //list ALL recipes
-    Iterable<RecipeModel> getAllRecipesList();
-
-    Iterable<RecipeModel> fetchRecipeList();
-
-    //delete recipe by ID
-    void deleteRecipeById(Long idRecipe);
-
-    //CREATE NEW RECIPE
-
-
-
 }

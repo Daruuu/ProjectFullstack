@@ -9,13 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, maxAge = 3600)
 @RestController
 @RequestMapping(value = "/api")
 public class MainController {
+
     @Autowired
     private IngredientService ingredientService;
     @Autowired
@@ -75,7 +75,7 @@ public class MainController {
     }
      */
 
-    //ENDPOINTS INGREDIENTCATEGORY
+    //ENDPOINTS INGREDIENTS CATEGORIES
 
     @RequestMapping(value = "/allIngredientCategory", method = RequestMethod.GET)
     //  localhost:8080/api/allIngredientCategory
@@ -83,8 +83,8 @@ public class MainController {
         return ingredientCategoryService.getCategoryIngredientList();
     }
 
-
     //ENDPOINTS FRONTED:
+
 
 
 }

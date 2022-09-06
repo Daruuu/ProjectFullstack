@@ -15,7 +15,6 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Autowired
     private IngredientRepository ingredientRepo;
-    private JdbcTemplate jdbcTemplate;
 
     // ADD NEW INGREDIENT
     @Override
@@ -58,34 +57,4 @@ public class IngredientServiceImpl implements IngredientService {
             throw new RuntimeException("Ingredient NOT FOUND for id:" + idIngredient);
         return ingredient;
     }
-
-    // RECIPES METHODS
-    @Override
-    public String createNewRecipe(IngredientModel ingredientModel, String nameRecipe, String categoryRecipe) {
-        return null;
-    }
-
-    @Override
-    public void createRecipe(int idNewRecipe, ArrayList<IngredientModel> ingredientRecipe, int cantidadIngredient) {
-        // String sql = "
-        //         "INSERT INTO new_recipes(ingredients_id_ingredient)
-        //VALUES( ?);
-        //";
-    }
-
-    @Override
-    public Iterable<RecipeModel> getAllRecipesList() {
-        return null;
-    }
-
-    @Override
-    public Iterable<RecipeModel> fetchRecipeList() {
-        return null;
-    }
-
-    @Override
-    public void deleteRecipeById(Long idRecipe) {
-
-    }
-
 }
