@@ -28,6 +28,7 @@ public class MainController {
     private RecipeCategoriesService recipeCategoriesService;
     @Autowired
     private RecipeService recipeService;
+
     //CREATE NEW INGREDIENT
     @RequestMapping(value = "/addIngredient", method = RequestMethod.POST)
     //  http://localhost:8080/api/add
@@ -104,13 +105,19 @@ public class MainController {
     @RequestMapping(value = "/addRecipe", method = RequestMethod.POST)
     public String createNewRecipe(@Validated @RequestBody RecipeModel recipeModel) {
         try {
-            recipeService.createNewRecipe();
+            //recipeService.createNewRecipe();
             return "saved new ingredient";
         } catch (Exception e) {
             return "failed add new ingredient";
         }
     }
 
+    //ENDPOINT RECIPES
+    @RequestMapping(value = "/allRecipes", method = RequestMethod.GET)
+    //  localhost:8080/api/allRecipesCategory
+    public Iterable<RecipeModel> getAllRecipe(){
+        return recipeService.getRecipeList();
+    }
 
 
 }

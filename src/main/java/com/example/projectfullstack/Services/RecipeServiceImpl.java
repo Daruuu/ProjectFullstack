@@ -5,10 +5,11 @@ import com.example.projectfullstack.Model.RecipeModel;
 import com.example.projectfullstack.Repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
-
+@Service
 public class RecipeServiceImpl implements RecipeService{
 
     @Autowired
