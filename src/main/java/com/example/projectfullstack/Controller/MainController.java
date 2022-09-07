@@ -75,6 +75,13 @@ public class MainController {
         Optional<IngredientModel> ingrediente = Optional.ofNullable(ingredientService.getIngredientById(idIngredient));
         return ingrediente.map(ingredientModel -> ResponseEntity.ok().body(ingredientModel)).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @RequestMapping(value="/buscarReceta/{id}", method = RequestMethod.GET)
+    public ResponseEntity<RecipeModel> getRecipeById(@PathVariable(value="id")Long idRecipe){
+        Optional<RecipeModel> recipe = Optional.ofNullable(recipeService.getRecipeById(idRecipe));
+        return recipe.map(recipeModel -> ResponseEntity.ok().body(recipeModel)).orElseGet(()-> ResponseEntity.notFound().build());
+    }
+
     /*
     if (ingrediente.isPresent()) {  //return 199 Ok
         return ResponseEntity.ok().body(ingrediente.get());
@@ -105,6 +112,7 @@ public class MainController {
     public Iterable<RecipeModel> getAllRecipe(){
         return recipeService.getRecipeList();
     }
+        //Search recipe by ID
 
     //ENDPOINTS FRONTED:
 
