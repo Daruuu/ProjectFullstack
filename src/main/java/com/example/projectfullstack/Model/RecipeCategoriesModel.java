@@ -12,7 +12,12 @@ public class RecipeCategoriesModel {
     @Column(name="id_recipe_category")
     private Long idRecipeCategory;
     @Column(name="name_recipe_category")
-    private Long nameRecipeCategory;
+    private String nameRecipeCategory;
+
+    public RecipeCategoriesModel (Long idRecipeCategory, String nameRecipeCategory) {
+        this.idRecipeCategory = idRecipeCategory;
+        this.nameRecipeCategory = nameRecipeCategory;
+    }
 
     public Long getIdRecipeCategory() {
         return idRecipeCategory;
@@ -22,13 +27,14 @@ public class RecipeCategoriesModel {
         this.idRecipeCategory = idRecipeCategory;
     }
 
-    public Long getNameRecipeCategory() {
+    public String getNameRecipeCategory() {
         return nameRecipeCategory;
     }
 
-    public void setNameRecipeCategory(Long nameRecipeCategory) {
+    public void setNameRecipeCategory(String nameRecipeCategory) {
         this.nameRecipeCategory = nameRecipeCategory;
     }
+
 
     @Override
     public String toString(){

@@ -3,6 +3,7 @@ package com.example.projectfullstack.Controller;
 import com.example.projectfullstack.Model.IngredientCategoryModel;
 import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Model.RecipeCategoriesModel;
+import com.example.projectfullstack.Model.RecipeModel;
 import com.example.projectfullstack.Services.IngredientCategoryService;
 import com.example.projectfullstack.Services.IngredientService;
 import com.example.projectfullstack.Services.RecipeCategoriesService;
@@ -100,6 +101,15 @@ public class MainController {
     //ENDPOINTS FRONTED:
 
     //CREATE NEW RECIPE:
+    @RequestMapping(value = "/addRecipe", method = RequestMethod.POST)
+    public String createNewRecipe(@Validated @RequestBody RecipeModel recipeModel) {
+        try {
+            recipeService.createNewRecipe();
+            return "saved new ingredient";
+        } catch (Exception e) {
+            return "failed add new ingredient";
+        }
+    }
 
 
 
