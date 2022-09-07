@@ -14,10 +14,16 @@ public class RecipeModel {
     private Long idRecipe;
     @Column(name = "name_recipe")
     private Long nameRecipe;
+    @Column(name = "price_recipe")
+    private Long priceRecipe;
+    @Column(name = "kcal_recipe")
+    private Long kcalRecipe;
 
-    public RecipeModel(Long idRecipe, Long nameRecipe) {
+    public RecipeModel(Long idRecipe, Long nameRecipe, Long priceRecipe, Long kcalRecipe) {
         this.idRecipe = idRecipe;
         this.nameRecipe = nameRecipe;
+        this.priceRecipe = priceRecipe;
+        this.kcalRecipe = kcalRecipe;
     }
 
     public RecipeModel() {
@@ -39,11 +45,21 @@ public class RecipeModel {
         this.nameRecipe = nameRecipe;
     }
 
+    public Long getPriceRecipe() {return priceRecipe;}
+
+    public void setPriceRecipe(Long priceRecipe) {this.priceRecipe = priceRecipe;}
+
+    public Long getKcalRecipe() {return kcalRecipe;}
+
+    public void setKcalRecipe(Long kcalRecipe) {this.kcalRecipe = kcalRecipe;}
+
     @Override
     public String toString() {
         return "RecipeModel{" +
                 "idRecipe=" + idRecipe +
                 ", nameRecipe=" + nameRecipe +
+                ", priceRecipe=" + priceRecipe +
+                ", kcalRecipe=" + kcalRecipe +
                 '}';
     }
 }

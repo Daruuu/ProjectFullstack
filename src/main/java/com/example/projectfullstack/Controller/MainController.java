@@ -2,8 +2,11 @@ package com.example.projectfullstack.Controller;
 
 import com.example.projectfullstack.Model.IngredientCategoryModel;
 import com.example.projectfullstack.Model.IngredientModel;
+import com.example.projectfullstack.Model.RecipeCategoriesModel;
 import com.example.projectfullstack.Services.IngredientCategoryService;
 import com.example.projectfullstack.Services.IngredientService;
+import com.example.projectfullstack.Services.RecipeCategoriesService;
+import com.example.projectfullstack.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,7 +23,10 @@ public class MainController {
     private IngredientService ingredientService;
     @Autowired
     private IngredientCategoryService ingredientCategoryService;
-
+    @Autowired
+    private RecipeCategoriesService recipeCategoriesService;
+    @Autowired
+    private RecipeService recipeService;
     //CREATE NEW INGREDIENT
     @RequestMapping(value = "/addIngredient", method = RequestMethod.POST)
     //  http://localhost:8080/api/add
@@ -36,6 +42,7 @@ public class MainController {
     public IngredientModel addIngredient(@Validated @RequestBody IngredientModel ingredientModel) {
         return ingredientService.saveNewIngredient(ingredientModel);
     }*/
+
 
     //SHOW ALL INGREDIENTS
     @RequestMapping(value = "/allIngredients", method = RequestMethod.GET)
@@ -83,7 +90,16 @@ public class MainController {
         return ingredientCategoryService.getCategoryIngredientList();
     }
 
+    //ENDPOINTS RECIPES CATEGORIES
+
+    @RequestMapping(value = "/allRecipesCategory", method = RequestMethod.GET)
+    //  localhost:8080/api/allRecipesCategory
+    public Iterable<RecipeCategoriesModel> getAllCategoryRecipe(){
+        return recipeCategoriesService.getRecipeCategoryList();
+    }
     //ENDPOINTS FRONTED:
+
+    //CREATE NEW RECIPE:
 
 
 
