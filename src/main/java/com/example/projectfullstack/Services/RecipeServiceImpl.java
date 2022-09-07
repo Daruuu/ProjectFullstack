@@ -21,7 +21,7 @@ public class RecipeServiceImpl implements RecipeService{
         ingredients = new ArrayList<>();
         String sql = "INSERT into new_recipes()";
     }
-    
+
     //LIST ALL RECIPES
     @Override
     public Iterable<RecipeModel> getRecipeList() {
