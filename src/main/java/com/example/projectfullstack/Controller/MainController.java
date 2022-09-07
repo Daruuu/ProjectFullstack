@@ -98,18 +98,17 @@ public class MainController {
     public Iterable<RecipeCategoriesModel> getAllCategoryRecipe(){
         return recipeCategoriesService.getRecipeCategoryList();
     }
+
+    //ENDPOINT RECIPES
+    @RequestMapping(value = "/allRecipes", method = RequestMethod.GET)
+    //  localhost:8080/api/allRecipesCategory
+    public Iterable<RecipeModel> getAllRecipe(){
+        return recipeService.getRecipeList();
+    }
+
     //ENDPOINTS FRONTED:
 
-    //CREATE NEW RECIPE:
-    @RequestMapping(value = "/addRecipe", method = RequestMethod.POST)
-    public String createNewRecipe(@Validated @RequestBody RecipeModel recipeModel) {
-        try {
-            recipeService.createNewRecipe();
-            return "saved new ingredient";
-        } catch (Exception e) {
-            return "failed add new ingredient";
-        }
-    }
+
 
 
 
