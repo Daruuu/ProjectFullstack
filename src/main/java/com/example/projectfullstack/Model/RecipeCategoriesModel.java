@@ -19,6 +19,9 @@ public class RecipeCategoriesModel {
         this.nameRecipeCategory = nameRecipeCategory;
     }
 
+    public RecipeCategoriesModel() {
+    }
+
     public Long getIdRecipeCategory() {
         return idRecipeCategory;
     }

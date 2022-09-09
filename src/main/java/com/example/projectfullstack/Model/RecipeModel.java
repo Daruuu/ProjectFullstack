@@ -13,20 +13,30 @@ public class RecipeModel {
     @Column(name = "id_recipe")
     private Long idRecipe;
     @Column(name = "name_recipe")
-    private Long nameRecipe;
+    private String nameRecipe;
     @Column(name = "price_recipe")
-    private Long priceRecipe;
+    private int priceRecipe;
     @Column(name = "kcal_recipe")
-    private Long kcalRecipe;
+    private int kcalRecipe;
+    @Column(name = "id_recipe_category")
+    private int idRecipeCategory;
 
-    public RecipeModel(Long idRecipe, Long nameRecipe, Long priceRecipe, Long kcalRecipe) {
+    public RecipeModel() {
+    }
+
+    public RecipeModel(String nameRecipe, int priceRecipe, int kcalRecipe, int idRecipeCategory) {
+        this.nameRecipe = nameRecipe;
+        this.priceRecipe = priceRecipe;
+        this.kcalRecipe = kcalRecipe;
+        this.idRecipeCategory = idRecipeCategory;
+    }
+
+    public RecipeModel(Long idRecipe, String nameRecipe, int priceRecipe, int kcalRecipe, int idRecipeCategory) {
         this.idRecipe = idRecipe;
         this.nameRecipe = nameRecipe;
         this.priceRecipe = priceRecipe;
         this.kcalRecipe = kcalRecipe;
-    }
-
-    public RecipeModel() {
+        this.idRecipeCategory = idRecipeCategory;
     }
 
     public Long getIdRecipe() {
@@ -37,29 +47,46 @@ public class RecipeModel {
         this.idRecipe = idRecipe;
     }
 
-    public Long getNameRecipe() {
+    public String getNameRecipe() {
         return nameRecipe;
     }
 
-    public void setNameRecipe(Long nameRecipe) {
+    public void setNameRecipe(String nameRecipe) {
         this.nameRecipe = nameRecipe;
     }
 
-    public Long getPriceRecipe() {return priceRecipe;}
+    public int getPriceRecipe() {
+        return priceRecipe;
+    }
 
-    public void setPriceRecipe(Long priceRecipe) {this.priceRecipe = priceRecipe;}
+    public void setPriceRecipe(int priceRecipe) {
+        this.priceRecipe = priceRecipe;
+    }
 
-    public Long getKcalRecipe() {return kcalRecipe;}
+    public int getKcalRecipe() {
+        return kcalRecipe;
+    }
 
-    public void setKcalRecipe(Long kcalRecipe) {this.kcalRecipe = kcalRecipe;}
+    public void setKcalRecipe(int kcalRecipe) {
+        this.kcalRecipe = kcalRecipe;
+    }
+
+    public int getIdRecipeCategory() {
+        return idRecipeCategory;
+    }
+
+    public void setIdRecipeCategory(int idRecipeCategory) {
+        this.idRecipeCategory = idRecipeCategory;
+    }
 
     @Override
     public String toString() {
         return "RecipeModel{" +
                 "idRecipe=" + idRecipe +
-                ", nameRecipe=" + nameRecipe +
+                ", nameRecipe='" + nameRecipe + '\'' +
                 ", priceRecipe=" + priceRecipe +
                 ", kcalRecipe=" + kcalRecipe +
+                ", idRecipeCategory=" + idRecipeCategory +
                 '}';
     }
 }

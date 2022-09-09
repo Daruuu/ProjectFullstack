@@ -6,7 +6,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "ingredients")
 public class IngredientModel implements Serializable {
-
     @Id
     @Column(name = "id_ingredient")
     private long idIngredient;

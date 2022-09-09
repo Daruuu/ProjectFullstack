@@ -1,9 +1,6 @@
 package com.example.projectfullstack.Controller;
 
-import com.example.projectfullstack.Model.IngredientCategoryModel;
-import com.example.projectfullstack.Model.IngredientModel;
-import com.example.projectfullstack.Model.RecipeCategoriesModel;
-import com.example.projectfullstack.Model.RecipeModel;
+import com.example.projectfullstack.Model.*;
 import com.example.projectfullstack.Services.IngredientCategoryService;
 import com.example.projectfullstack.Services.IngredientService;
 import com.example.projectfullstack.Services.RecipeCategoriesService;
@@ -13,13 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, maxAge = 3600)
 @RestController
 @RequestMapping(value = "/api")
 public class MainController {
-
     @Autowired
     private IngredientService ingredientService;
     @Autowired
@@ -40,11 +37,6 @@ public class MainController {
             return "failed add new ingredient";
         }
     }
-    /*
-    public IngredientModel addIngredient(@Validated @RequestBody IngredientModel ingredientModel) {
-        return ingredientService.saveNewIngredient(ingredientModel);
-    }*/
-
 
     //SHOW ALL INGREDIENTS
     @RequestMapping(value = "/allIngredients", method = RequestMethod.GET)
@@ -76,19 +68,12 @@ public class MainController {
         Optional<IngredientModel> ingrediente = Optional.ofNullable(ingredientService.getIngredientById(idIngredient));
         return ingrediente.map(ingredientModel -> ResponseEntity.ok().body(ingredientModel)).orElseGet(() -> ResponseEntity.notFound().build());
     }
-    /*
-    if (ingrediente.isPresent()) {  //return 199 Ok
-        return ResponseEntity.ok().body(ingrediente.get());
-    } else {                        //return notfound
-        return ResponseEntity.notFound().build();
-    }
-     */
 
     //ENDPOINTS INGREDIENTS CATEGORIES
 
     @RequestMapping(value = "/allIngredientCategory", method = RequestMethod.GET)
     //  localhost:8080/api/allIngredientCategory
-    public Iterable<IngredientCategoryModel> getAllCategoryIngredients(){
+    public Iterable<IngredientCategoryModel> getAllCategoryIngredients() {
         return ingredientCategoryService.getCategoryIngredientList();
     }
 
@@ -96,10 +81,10 @@ public class MainController {
 
     @RequestMapping(value = "/allRecipesCategory", method = RequestMethod.GET)
     //  localhost:8080/api/allRecipesCategory
-    public Iterable<RecipeCategoriesModel> getAllCategoryRecipe(){
+    public Iterable<RecipeCategoriesModel> getAllCategoryRecipe() {
         return recipeCategoriesService.getRecipeCategoryList();
     }
-    //ENDPOINTS FRONTED:
+//ENDPOINTS FRONTED:
 
     //CREATE NEW RECIPE:
     @RequestMapping(value = "/addRecipe", method = RequestMethod.POST)
@@ -115,9 +100,32 @@ public class MainController {
     //ENDPOINT RECIPES
     @RequestMapping(value = "/allRecipes", method = RequestMethod.GET)
     //  localhost:8080/api/allRecipesCategory
-    public Iterable<RecipeModel> getAllRecipe(){
+    public Iterable<RecipeModel> getAllRecipe() {
         return recipeService.getRecipeList();
     }
+
+    //ENDPOINT SEARCH RECIPE BY ID
+    @RequestMapping(value = "/buscarReceta/{id}", method = RequestMethod.GET)
+    public ResponseEntity<RecipeModel> getRecipeById(@PathVariable(value = "id") Long idRecipe) {
+
+        Optional<RecipeModel> recipe = Optional.ofNullable(recipeService.getRecipeById(idRecipe));
+        return recipe.map(recipeModel -> ResponseEntity.ok().body(recipeModel)).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @RequestMapping(value = "/testt", method = RequestMethod.POST)
+    //  http://localhost:8080/api/add
+    public void testt(@Validated @RequestBody List<IngredientModel> ingredientList) {
+        ingredientList.forEach(item ->{
+            System.out.println(item.toString());
+        });
+    }
+
+    @RequestMapping(value = "/newRecipe", method = RequestMethod.POST)
+    //  localhost:8080/api/newRecipe
+    public void crearReceta(@Validated @RequestBody List<NewRecipePOJO> arrNewRecipe){
+        System.out.println(arrNewRecipe);
+    }
+
 
 
 }

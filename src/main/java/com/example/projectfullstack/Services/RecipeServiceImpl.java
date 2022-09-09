@@ -14,13 +14,33 @@ public class RecipeServiceImpl implements RecipeService{
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+    @Autowired
     private RecipeRepository recipeRepo;
+
     //ADD NEW RECIPE
+
     @Override
-    public void createNewRecipe(String nameRecipe, ArrayList<IngredientModel> ingredients, String idCategoryRecipe) {
-        //ArrayList<IngredientModel>
-        ingredients = new ArrayList<>();
-        String sql = "INSERT into new_recipes()";
+    public int createNewRecipe(String nameRecipe, ArrayList<IngredientModel> ingredientsArr, String idCategoryRecipe) {
+
+        ingredientsArr.forEach(System.out::println);
+        //ingredientsArr.forEach((arr) -> System.out.println(arr));
+        String insertQueryTableNewRecipes = "INSERT INTO new_recipes(" +
+                "id_new_recipes," +
+                "ingredients_id_ingredient," +
+                "cantidad_ingredient)" +
+                "VALUES(?,?,?)";
+
+        String insertQueryTableRecipe = "INSERT INTO recipe(" +
+                "name_recipe," +
+                "id_recipe_category," +
+                "price_recipe," +
+                "kcal_recipe)" +
+                "VALUES(?,?,?,?)";
+
+        return jdbcTemplate.update(insertQueryTableNewRecipes, new Object[]{  });
+        //return insertQueryRecipe;
+        //new recipes ==> ingrediente cantidad, id_new_recipe
+        //recipes ==>
     }
     
     //LIST ALL RECIPES
@@ -29,7 +49,7 @@ public class RecipeServiceImpl implements RecipeService{
         return recipeRepo.findAll();
     }
 
-    //GET BY ID
+    //GET RECIPE BY ID
     @Override
     public RecipeModel getRecipeById(Long idRecipe) {
         Optional<RecipeModel> optional = recipeRepo.findById(idRecipe);

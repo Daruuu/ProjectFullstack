@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public interface RecipeService {
 
     //save & create new recipe
-    void createNewRecipe(String nameRecipe,ArrayList<IngredientModel> ingredients, String idCategoryRecipe);
+    int createNewRecipe(String nameRecipe, ArrayList<IngredientModel> ingredients, String idCategoryRecipe);
 
     //LIST ALL RECIPES
     Iterable<RecipeModel> getRecipeList();

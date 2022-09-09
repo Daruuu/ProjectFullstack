@@ -17,6 +17,10 @@ public class IngredientCategoryModel {
     public IngredientCategoryModel() {
     }
 
+    public IngredientCategoryModel(int idCategory) {
+        this.idCategory = idCategory;
+    }
+
     public IngredientCategoryModel(String nameCategory) {
         this.nameCategory = nameCategory;
     }
