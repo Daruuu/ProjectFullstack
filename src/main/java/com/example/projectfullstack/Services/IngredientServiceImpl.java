@@ -1,13 +1,10 @@
 package com.example.projectfullstack.Services;
 
 import com.example.projectfullstack.Model.IngredientModel;
-import com.example.projectfullstack.Model.RecipeModel;
 import com.example.projectfullstack.Repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 @Service

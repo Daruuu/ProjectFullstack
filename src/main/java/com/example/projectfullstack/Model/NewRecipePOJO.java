@@ -1,17 +1,16 @@
 package com.example.projectfullstack.Model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-public class NewRecipePOJO {
-
+public class NewRecipePOJO implements Serializable {
     private long idRecipe;
     private String nameRecipe;
     private int idRecipeCategory;
     private int priceRecipe;
     private int kcalRecipe;
     private List<IngredientModel> ingredientsList;
+
 
     public NewRecipePOJO() {
     }
@@ -24,6 +23,7 @@ public class NewRecipePOJO {
         this.kcalRecipe = kcalRecipe;
         this.ingredientsList = ingredientsArrayList;
     }
+
 
     public long getIdRecipe() {
         return idRecipe;

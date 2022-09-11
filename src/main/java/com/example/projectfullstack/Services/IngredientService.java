@@ -1,9 +1,6 @@
 package com.example.projectfullstack.Services;
 
 import com.example.projectfullstack.Model.IngredientModel;
-import com.example.projectfullstack.Model.RecipeModel;
-
-import java.util.ArrayList;
 
 public interface IngredientService{
 

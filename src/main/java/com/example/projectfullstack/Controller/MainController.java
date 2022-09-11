@@ -1,10 +1,7 @@
 package com.example.projectfullstack.Controller;
 
 import com.example.projectfullstack.Model.*;
-import com.example.projectfullstack.Services.IngredientCategoryService;
-import com.example.projectfullstack.Services.IngredientService;
-import com.example.projectfullstack.Services.RecipeCategoriesService;
-import com.example.projectfullstack.Services.RecipeService;
+import com.example.projectfullstack.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,6 +22,8 @@ public class MainController {
     private RecipeCategoriesService recipeCategoriesService;
     @Autowired
     private RecipeService recipeService;
+    //@Autowired
+    //private NewRecipePOJOService newRecipePOJOService;
 
     //CREATE NEW INGREDIENT
     @RequestMapping(value = "/addIngredient", method = RequestMethod.POST)
@@ -125,6 +124,17 @@ public class MainController {
     public void crearReceta(@Validated @RequestBody List<NewRecipePOJO> arrNewRecipe){
         System.out.println(arrNewRecipe);
     }
+/*
+    public String createRecipeHtml(@Validated @RequestBody NewRecipePOJO newRecipePOJO){
+        try {
+            newRecipePOJOService.createNewRecipeFronted(newRecipePOJO);
+            return "saved new ingredient";
+        } catch (Exception e) {
+            return "failed add new ingredient";
+        }
+    }
+
+ */
 
 
 
