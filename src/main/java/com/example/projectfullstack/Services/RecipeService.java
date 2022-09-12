@@ -1,6 +1,7 @@
 package com.example.projectfullstack.Services;
 
 import com.example.projectfullstack.Model.IngredientModel;
+import com.example.projectfullstack.Model.NewRecipePOJO;
 import com.example.projectfullstack.Model.RecipeModel;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ public interface RecipeService {
 
     //save & create new recipe
     int createNewRecipe(String nameRecipe, ArrayList<IngredientModel> ingredients, String idCategoryRecipe);
+    int newRecipeHtml(NewRecipePOJO newRecipePOJO);
 
     //LIST ALL RECIPES
     Iterable<RecipeModel> getRecipeList();

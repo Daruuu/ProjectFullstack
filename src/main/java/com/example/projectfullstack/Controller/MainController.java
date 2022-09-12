@@ -27,7 +27,7 @@ public class MainController {
 
     //CREATE NEW INGREDIENT
     @RequestMapping(value = "/addIngredient", method = RequestMethod.POST)
-    //  http://localhost:8080/api/add
+    //  http://localhost:8080/api/addIngredient
     public String addNewIngredient(@Validated @RequestBody IngredientModel ingredientModel) {
         try {
             ingredientService.addNewIngredient(ingredientModel);
@@ -39,7 +39,7 @@ public class MainController {
 
     //SHOW ALL INGREDIENTS
     @RequestMapping(value = "/allIngredients", method = RequestMethod.GET)
-    //  http://localhost:8080/api/all
+    //  http://localhost:8080/api/allIngredients
     public Iterable<IngredientModel> getIngredientsList() {
         return ingredientService.getIngredientList();
     }

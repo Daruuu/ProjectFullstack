@@ -3,7 +3,7 @@ package com.example.projectfullstack.Model;
 import java.io.Serializable;
 import java.util.List;
 
-public class NewRecipePOJO implements Serializable {
+public class NewRecipePOJO {
     private long idRecipe;
     private String nameRecipe;
     private int idRecipeCategory;

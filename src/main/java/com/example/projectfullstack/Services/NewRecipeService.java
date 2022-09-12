@@ -1,26 +1,32 @@
 package com.example.projectfullstack.Services;
 
-import com.example.projectfullstack.Model.IngredientModel;
 import com.example.projectfullstack.Model.NewRecipePOJO;
-import com.example.projectfullstack.Model.RecipeModel;
-import com.example.projectfullstack.Repository.RecipeRepository;
+import com.example.projectfullstack.Repository.NewRecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Optional;
-@Service
-public class RecipeServiceImpl implements RecipeService{
+public class NewRecipeService implements NewRecipeRepository {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
-    @Autowired
-    private RecipeRepository recipeRepo;
-
-    //ADD NEW RECIPE
+    private JdbcTemplate jdbcTemplate;
 
     @Override
+    public int addNewRecipe(NewRecipePOJO newRecipePOJO) {
+        String insertQueryTableNewRecipes = "INSERT INTO new_recipes(" +
+                "id_new_recipes," +
+                "ingredients_id_ingredient," +
+                "cantidad_ingredient)" +
+                "VALUES(?,?,?)";
+        return jdbcTemplate.update(insertQueryTableNewRecipes, newRecipePOJO.getIdRecipe(),
+                newRecipePOJO.getIngredientsList(),
+                newRecipePOJO.getKcalRecipe());
+    }
+
+    @Override
+    public int deleteNewRecipe(long id) {
+        return 0;
+    }
+    /*
     public int createNewRecipe(String nameRecipe, ArrayList<IngredientModel> ingredientsArr, String idCategoryRecipe) {
 
         ingredientsArr.forEach(System.out::println);
@@ -43,28 +49,6 @@ public class RecipeServiceImpl implements RecipeService{
         //new recipes ==> ingrediente cantidad, id_new_recipe
         //recipes ==>
     }
+     */
 
-    @Override
-    public int newRecipeHtml(NewRecipePOJO newRecipePOJO) {
-        return 0;
-    }
-
-
-    //LIST ALL RECIPES
-    @Override
-    public Iterable<RecipeModel> getRecipeList() {
-        return recipeRepo.findAll();
-    }
-
-    //GET RECIPE BY ID
-    @Override
-    public RecipeModel getRecipeById(Long idRecipe) {
-        Optional<RecipeModel> optional = recipeRepo.findById(idRecipe);
-        RecipeModel recipe = null;
-        if (optional.isPresent())
-            recipe = optional.get();
-        else
-            throw new RuntimeException("Recipe NOT FOUND for id:" + idRecipe);
-        return recipe;
-    }
 }
