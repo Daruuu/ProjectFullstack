@@ -9,7 +9,7 @@ public class IngredientModel implements Serializable {
     @Id
     @Column(name = "id_ingredient")
     private long idIngredient;
-    @Column(name = "name_ingredient", unique = true)
+    @Column(name = "name_ingredient")
     private String nameIngredient;
     private int peso;
     private String medicion;

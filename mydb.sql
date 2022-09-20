@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ingredient_category` (
   `name_category` VARCHAR(45),
   PRIMARY KEY (`id_category`));
 
+
 INSERT INTO ingredient_category (id_category, name_category) VALUES
 (1,"aceites_especias_salsas"),
 (2,"aperitivos"),
@@ -25,21 +26,20 @@ INSERT INTO ingredient_category (id_category, name_category) VALUES
 (11,"charcuteria_quesos");
 SELECT * FROM ingredient_category;
 
-
-
 -- -----------------------------------------------------
 -- Table `mydb`.`ingredient_category`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`recipe_category` (
   `id_recipe_category` INT NOT NULL auto_increment UNIQUE,
   `name_recipe_category` VARCHAR(45) UNIQUE,
-  image_recipe_category VARCHAR(500),
+  `image_recipe_category` VARCHAR(500),
   PRIMARY KEY (`id_recipe_category`));
   
 
 -- -----------------------------------------------------
--- Table `mydb`.`recipes`
+-- Table `mydb`.`ingredients`
 -- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS `mydb`.`ingredients` (
   `id_ingredient` INT NOT NULL AUTO_INCREMENT,
   `name_ingredient` VARCHAR(150) UNIQUE,
@@ -58,8 +58,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ingredients` (
   FOREIGN KEY (number_categories) references ingredient_category (id_category),
   PRIMARY KEY (`id_ingredient`));
   
+  
+  -- -----------------------------------------------------
+-- Table `mydb`.`recipes`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`recipes` (
-  `id_recipe` INT NOT NULL AUTO_INCREMENT UNIQUE,
+  `id_recipe` INT AUTO_INCREMENT UNIQUE,
   `name_recipe` VARCHAR(45) NULL UNIQUE,
   `id_recipe_category` INT,
   `price_recipe` INT,
@@ -68,12 +72,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`recipes` (
   PRIMARY KEY (`id_recipe`));
 
 CREATE TABLE IF NOT EXISTS `mydb`.`new_recipes` (
-   `recipes_id_recipe` INT NOT NULL AUTO_INCREMENT,
- `id_new_recipes` INT,
-  `ingredients_id_ingredient` INT NOT NULL,
-   `cantidad_ingredient` INT NOT NULL, 
+	`recipes_id_recipe` INT NOT NULL AUTO_INCREMENT,
+	`id_new_recipes` INT,
+	`ingredients_id_ingredient` INT NOT NULL,
+	`cantidad_ingredient` INT NOT NULL, 
   FOREIGN KEY (id_new_recipes) references recipes (id_recipe),
-
+  FOREIGN KEY(ingredients_id_ingredient) references ingredients(id_ingredient),
   PRIMARY KEY (`recipes_id_recipe`));
 
 INSERT INTO recipe_category(id_recipe_category,name_recipe_category, image_recipe_category) VALUES
@@ -190,6 +194,7 @@ INSERT INTO ingredients (id_ingredient, name_ingredient, peso, medicion, kcal, g
 (null,"Spaghetti sin gluten con quinoa Felicia", 500, "g", 355, 2.0, 0.7, 76.0, 0.5, 2.5, 7.3, 0.01, 1.70, 3),
 (null,"Gnocchi frescos Hacendado de patata", 500, "g", 174, 0.4, 0.2, 37.6, 0.2, 0.0, 4.5, 0.87, 1.10, 3);
 
+
 INSERT INTO ingredients (id_ingredient, name_ingredient, peso, medicion, kcal, grasas, grasas_saturadas, carbohidratos, carbohidratos_azucares, fibra, proteinas, sal, precio, number_categories) VALUES
 	(null,"Placas para canelones tradicionales Hacendado", 160, "g", 362, 1.1, 0.2, 75.0, 2.0, 4.0, 11.0, 0.01, 0.70, 3),
 	(null,"Cannelloni tubos precocidos Hacendado", 250, "g", 350, 1.5, 0.3, 72.6, 3.5, 3.0, 11.5, 0.005, 1.35, 3),
@@ -298,10 +303,10 @@ INSERT INTO ingredients (id_ingredient, name_ingredient, peso, medicion, kcal, g
 	(null, "Queso semicurado mezcla Hacendado", 420, "g", 421, 35, 25, 1.6, 0.5, 0.0, 25, 1.7, 3.49, 11),
 	(null, "Queso tierno mezcla Hacendado", 350, "g", 372, 32, 19, 0.5, 0.5, 0.0, 21, 1.4, 2.66, 11);
 
-
 INSERT INTO recipes(id_recipe,name_recipe,id_recipe_category, price_recipe, kcal_recipe) VALUES
 (1, "Arroz a la cubana", 7, 14, 214),
-(null, "Bacalao con verduras", 4, 222, 153);
+(2, "Bacalao con verduras", 4, 222, 153);
+
 
 INSERT INTO new_recipes(recipes_id_recipe,id_new_recipes, ingredients_id_ingredient, cantidad_ingredient) VALUES
 (1, 1, 70, 500),
@@ -312,9 +317,10 @@ SELECT * FROM ingredients;
 SELECT * FROM recipe_category;
 SELECT * FROM new_recipes;
 SELECT * FROM recipes;
+SELECT * FROM ingredient_category;
+
 
 SELECT id_new_recipes, group_concat(DISTINCT ingredients_id_ingredient)
 from new_recipes
 group by id_new_recipes
 ORDER BY group_concat(DISTINCT ingredients_id_ingredient) ASC;
- 

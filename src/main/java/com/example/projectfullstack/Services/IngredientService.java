@@ -2,6 +2,7 @@ package com.example.projectfullstack.Services;
 
 import com.example.projectfullstack.Model.IngredientModel;
 
+
 public interface IngredientService{
 
 //BASIC METHODS USING CRUD

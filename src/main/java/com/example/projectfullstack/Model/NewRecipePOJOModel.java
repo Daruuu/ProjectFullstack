@@ -1,27 +1,21 @@
 package com.example.projectfullstack.Model;
-import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.List;
 
-public class NewRecipePOJO implements Serializable{
+public class NewRecipePOJOModel implements Serializable{
 
-    private int idRecipe;
-    //@Column(name = "name_recipe")
+    private Long idRecipe;
     private String nameRecipe;
-    //@Column(name = "id_recipe_category")
     private int idRecipeCategory;
-
     private int cantidadIngredient;
-    //@Column(name = "price_recipe")
     private int priceRecipe;
-    //@Column(name = "kcal_recipe")
     private int kcalRecipe;
     private List<IngredientModel> ingredientsList;
 
-    public NewRecipePOJO() {
+    public NewRecipePOJOModel() {
     }
 
-    public NewRecipePOJO(int idRecipe, String nameRecipe, int idRecipeCategory, int cantidadIngredient, int priceRecipe, int kcalRecipe, List<IngredientModel> ingredientsList) {
+    public NewRecipePOJOModel(Long idRecipe, String nameRecipe, int idRecipeCategory, int cantidadIngredient, int priceRecipe, int kcalRecipe, List<IngredientModel> ingredientsList) {
         this.idRecipe = idRecipe;
         this.nameRecipe = nameRecipe;
         this.idRecipeCategory = idRecipeCategory;
@@ -32,11 +26,11 @@ public class NewRecipePOJO implements Serializable{
     }
 
 
-    public long getIdRecipe() {
+    public Long getIdRecipe() {
         return idRecipe;
     }
 
-    public void setIdRecipe(int idRecipe) {
+    public void setIdRecipe(Long idRecipe) {
         this.idRecipe = idRecipe;
     }
 
@@ -90,7 +84,7 @@ public class NewRecipePOJO implements Serializable{
 
     @Override
     public String toString() {
-        return "NewRecipePOJO{" +
+        return "NewRecipePOJOModel{" +
                 "idRecipe=" + idRecipe +
                 ", nameRecipe='" + nameRecipe + '\'' +
                 ", idRecipeCategory=" + idRecipeCategory +

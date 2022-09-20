@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, maxAge = 3600)
@@ -17,11 +16,8 @@ import java.util.Optional;
 public class IngredientController {
     @Autowired
     private IngredientService ingredientService;
-    @Autowired
-    private RecipeService recipeService;
-
-    @Autowired
-    NewRecipePOJOService newRecipeService;
+    //@Autowired
+    //private RecipeService recipeService;
 
     //CREATE NEW INGREDIENT
     @RequestMapping(value = "/addIngredient", method = RequestMethod.POST)
@@ -65,5 +61,4 @@ public class IngredientController {
         Optional<IngredientModel> ingrediente = Optional.ofNullable(ingredientService.getIngredientById(idIngredient));
         return ingrediente.map(ingredientModel -> ResponseEntity.ok().body(ingredientModel)).orElseGet(() -> ResponseEntity.notFound().build());
     }
-
 }

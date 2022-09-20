@@ -14,9 +14,13 @@ public class RecipeCategoriesModel {
     @Column(name="name_recipe_category")
     private String nameRecipeCategory;
 
-    public RecipeCategoriesModel (Long idRecipeCategory, String nameRecipeCategory) {
+    @Column(name = "image_recipe_category")
+    private String url;
+
+    public RecipeCategoriesModel (Long idRecipeCategory, String nameRecipeCategory, String url) {
         this.idRecipeCategory = idRecipeCategory;
         this.nameRecipeCategory = nameRecipeCategory;
+        this.url = url;
     }
 
     public RecipeCategoriesModel() {
@@ -38,11 +42,20 @@ public class RecipeCategoriesModel {
         this.nameRecipeCategory = nameRecipeCategory;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     @Override
-    public String toString(){
-        return "RecipeCategoryModel{" + "idRecipeCategory=" + idRecipeCategory +
-                ", nameRecipe=" + nameRecipeCategory +
-                "}";
+    public String toString() {
+        return "RecipeCategoriesModel{" +
+                "idRecipeCategory=" + idRecipeCategory +
+                ", nameRecipeCategory='" + nameRecipeCategory + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }
