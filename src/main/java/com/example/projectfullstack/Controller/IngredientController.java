@@ -16,8 +16,6 @@ import java.util.Optional;
 public class IngredientController {
     @Autowired
     private IngredientService ingredientService;
-    //@Autowired
-    //private RecipeService recipeService;
 
     //CREATE NEW INGREDIENT
     @RequestMapping(value = "/addIngredient", method = RequestMethod.POST)
