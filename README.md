@@ -1,7 +1,8 @@
 ## ProjectFullstack
 ### Lenguajes utilizados en el proyecto:
 
-* Html, CSS, Bootstrap5 para el fronted.
-* Springboot, Java y MySQL para en backend
+* Html, CSS, Bootstrap5 y JavaScript para el fronted.
+* Java, Springboot para en backend.
+* MySQL para la base datos, la cual se conecta con Springboot.
 
-![img.png](img.png)
+![structure backend API springboot](Structure_API_Backend.drawio.png)
